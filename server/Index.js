@@ -16,7 +16,7 @@ Mongoose.connect(process.env.DB_URL)
 
 
 //cors  config
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(cors({ origin:true, credentials: true }));
 
 
 //express json
