@@ -56,7 +56,7 @@ const Index = () => {
         </div>
 
         <p className='text-center text-gray-600 leading-7'>
-          Live Document App is your go-to solution for real-time document collaboration. Whether you're working on projects, writing reports, or brainstorming ideas with your team, our app provides the tools you need to stay connected and productive. With robust version control, document sharing, and live editing capabilities, it’s built for teamwork, no matter where your team is located.
+        Live Document App is your ultimate solution for real-time live canvas collaboration. Whether you're brainstorming ideas, sketching concepts, or sharing insights, our app empowers your team to connect and create seamlessly. With robust version control, intuitive sharing, and live editing, it's designed to make teamwork fluid and engaging, no matter where you are.
         </p>
       </div>
 
