@@ -167,7 +167,7 @@ const Component = () => {
                         ))}
                     </div>
                     {/* button */}
-                    {/* <div className="mt-4 md:mt-0 md:ml-auto">
+                    <div className="mt-4 md:mt-0 md:ml-auto">
                         <button 
                             className='text-xl font-semibold h-fit bg-green-500/50 py-2 px-4 rounded-xl shadow-lg hover:bg-green-500 flex items-center space-x-2'
                             onClick={HandleSave}
@@ -175,7 +175,7 @@ const Component = () => {
                             <FiSave size={20} />
                             <span>Save</span>
                         </button>
-                    </div> */}
+                    </div>
                 </div>
                 
                 <div className="flex-1">
