@@ -18,6 +18,9 @@ export const getUserDetails=(id)=>{
                 url:'/user',
                 params:{
                     _id:id
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
 
@@ -33,9 +36,9 @@ export const SignIn=(name,pass)=>{
     return new Promise(async(resolve,reject)=>{
         try {
             const config={
-                method:'get',
+                method:'post',
                 url:'/signin',
-                params:{
+                data:{
                     Name:name,
                     Password:pass
                 },
@@ -43,6 +46,7 @@ export const SignIn=(name,pass)=>{
              }
              const response=await axios(config)
              Cookies.set('userId',response.data[0]._id)
+             Cookies.set('Token',response.data[0].token)
              return resolve(response.data[0])
         } 
         catch (error) {
@@ -65,6 +69,7 @@ export const SignUp=(name,pass)=>{
              }
              const response=await axios(config)
              Cookies.set('userId',response.data._id)
+             Cookies.set('Token',response.data.token)
              return resolve(response.data)
         } 
         catch (error) {
@@ -87,6 +92,9 @@ export const SearchFriend=(name)=>{
             url:'/searchfriend',
             params:{
                 Name:name
+            },
+            headers: {
+                'Authorization': `Bearer ${Cookies.get('Token')}`
             }
            } 
 
@@ -109,6 +117,9 @@ export const SaveDocument=(obj,Invites)=>{
                 data: {
                     obj: obj,
                     Invites: Invites
+                  },
+                  headers: {
+                      'Authorization': `Bearer ${Cookies.get('Token')}`
                   }
             }
             const response=await axios(config)
@@ -128,6 +139,9 @@ export const GetRequest=(id)=>{
                 url:'/getrequest',
                 params:{
                     _id:id
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
             const response=await axios(config)
@@ -147,6 +161,9 @@ export const AcceptRequest=(userId,docId)=>{
                 data:{            
                     UserId:userId,
                     DocId:docId
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
             const response=await axios(config)
@@ -165,6 +182,9 @@ export const DeleteRequest=(id)=>{
                 url:'/deleterequest',
                 params:{
                     _id:id
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
             await axios(config)
@@ -183,6 +203,9 @@ export const GetDocuments=(id)=>{
                 url:'/getdocument',
                 params:{
                     _id:id
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
 
@@ -204,6 +227,9 @@ export const DeleteDocument=(id)=>{
                 url:'/deletedocument',
                 params:{
                     _id:id
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
             await axios(config)
@@ -225,6 +251,9 @@ export const GetDocumentDetails=(id,userid)=>{
                 params:{
                     _id:id,
                     UserId:userid
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
 
@@ -246,6 +275,9 @@ export const DeleteAccess=(docid,userid)=>{
                 params:{
                     DocId:docid,
                     UserId:userid
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
 
@@ -268,6 +300,9 @@ export const SendInvite=(senderid,receiverid,docid)=>{
                     senderid:senderid,
                     receiverid:receiverid,
                     docid:docid
+                },
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('Token')}`
                 }
             }
             await axios(config)
