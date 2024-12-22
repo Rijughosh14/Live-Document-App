@@ -65,6 +65,7 @@ const Component = () => {
             SetGroup(response.Group);
             SetDocumentId(response._id);
             SetDocumentAdminId(response.DocumentAdminId);
+            SetInvites(response.Invites || []); // Make sure to handle Invites from the response
         } catch (error) {
             console.error(error);
             navigate('/home');
@@ -110,6 +111,21 @@ const Component = () => {
             )}
         </>
     );
+
+    const StatusBadges = () => {
+        if (Online.length > 0) {
+            return Online.map((username, index) => (
+                <div key={index} className='px-3 py-1 rounded-full bg-green-500 text-white text-sm'>
+                    {username}
+                </div>
+            ));
+        }
+        return Invites.map((invite, index) => (
+            <div key={index} className='px-3 py-1 rounded-full bg-blue-500 text-white text-sm'>
+                {invite.Name}
+            </div>
+        ));
+    };
 
     return (
         <div className="flex flex-col md:flex-row bg-gray-300 min-h-screen h-fit">
@@ -160,13 +176,9 @@ const Component = () => {
                         />
                     </div>
                     <div className='flex flex-wrap gap-2 justify-center md:justify-start'>
-                        {Online.map((username, index) => (
-                            <div key={index} className='px-3 py-1 rounded-full bg-green-500 text-white text-sm'>
-                                {username}
-                            </div>
-                        ))}
+                        <StatusBadges />
                     </div>
-                    {/* button */}
+                    {/* Save button */}
                     <div className="mt-4 md:mt-0 md:ml-auto">
                         <button 
                             className='text-xl font-semibold h-fit bg-green-500/50 py-2 px-4 rounded-xl shadow-lg hover:bg-green-500 flex items-center space-x-2'
